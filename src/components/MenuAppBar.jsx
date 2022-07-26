@@ -28,9 +28,9 @@ export default function MenuAppBar({ setOpenDrawer }) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Clone BnB
+            Clone airbnb
           </Typography>
-          {false && (
+          {true && (
             <div>
               <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleMenu} color="inherit">
                 <AccountCircle />

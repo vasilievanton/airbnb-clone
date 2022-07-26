@@ -9,15 +9,20 @@ const MyDrawer = ({ open, setOpen }) => {
   const items = useSelector((state) => state.wishlist.items);
   const dispatch = useDispatch();
 
-  console.log(items);
   return (
     <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
-      <Box sx={{width:300}}>
-        <Typography sx={{display:'flex', justifyContent:'center', mt:3 }} variant='h6'>My Wishlist</Typography>
+      <Box sx={{ width: 300 }}>
+        <Typography sx={{ display: 'flex', justifyContent: 'center', mt: 3 }} variant="h6">
+          My Wishlist
+        </Typography>
         <List>
           {items.map((item) => (
             <ListItem key={item.id}>
-              <ListItemButton onClick={()=>{console.log('click');}}>
+              <ListItemButton
+                onClick={() => {
+                  console.log('click');
+                }}
+              >
                 <ListItemText primary={item.title} />
               </ListItemButton>
               <IconButton color="error" onClick={() => dispatch(removeItemAction(item.id))}>
