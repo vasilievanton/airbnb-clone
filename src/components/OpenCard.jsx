@@ -36,7 +36,7 @@ const OpenCard = ({ img }) => {
       <Box>
         <CardActionArea component="div">
           <Box sx={{ width: 500, height: 450, overflow: 'scroll' }}>
-            <ImageList variant="quilted" cols={2} gap={5}>
+            <ImageList variant="quilted" cols={2} gap={5} sx={{m:0}}>
               {img.urls.map((item) => (
                 <ImageListItem key={item}>
                   <img src={`${item.url}?w=248&fit=crop&auto=format`} srcSet={`${item.url}?w=248&fit=crop&auto=format&dpr=2 2x`} loading="lazy" />
