@@ -22,13 +22,15 @@ const styleCard = {
   overflow: 'scroll',
   display: 'flex',
   justifyContent: 'space-between',
-  width: 800,
+  width: 1000,
   bgcolor: 'background.paper',
   borderRadius: 3,
   boxShadow: 24,
 };
 
 const MyModal = ({ setImgIdInModal, imgIdInModal }) => {
+
+  //TODO: ({ setImgIdInModal, imgIdInModal }) перенести в редакс для удобство вызова модального окна из вишлиста
   const isOpenModal = useSelector((state) => state.isModal.isModal);
   const dispatch = useDispatch();
 
