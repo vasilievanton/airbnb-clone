@@ -1,9 +1,7 @@
-import { Box, IconButton, Modal } from '@mui/material';
+import { Box, Modal } from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import OpenCard from './OpenCard';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { setCloseModalAction } from '../../store/actions';
 
 const styleModal = {
@@ -28,31 +26,18 @@ const styleCard = {
   boxShadow: 24,
 };
 
-const MyModal = ({ setImgIdInModal }) => {
-  const imgIdInModal = useSelector((state) => state.isModal.item);
+const MyModal = () => {
   const isOpenModal = useSelector((state) => state.isModal.isModal);
   const dispatch = useDispatch();
-
   const handleCloseModal = () => {
     dispatch(setCloseModalAction());
   };
-  const imgList = useSelector((state) => state.items.items);
 
   return (
     <Modal open={isOpenModal} onClose={() => handleCloseModal()}>
       <Box sx={{ ...styleModal }}>
-        <Box>
-          <IconButton disabled={imgIdInModal <= 1} sx={{ color: 'white' }} onClick={() => setImgIdInModal(imgIdInModal - 1)}>
-            <ArrowBackIosIcon />
-          </IconButton>
-        </Box>
         <Box sx={{ ...styleCard }}>
-          <OpenCard img={imgList.find((city) => city.id === imgIdInModal)} />
-        </Box>
-        <Box>
-          <IconButton disabled={imgIdInModal > 5} sx={{ color: 'white' }} onClick={() => setImgIdInModal(imgIdInModal + 1)}>
-            <ArrowForwardIosIcon />
-          </IconButton>
+          <OpenCard />
         </Box>
       </Box>
     </Modal>
