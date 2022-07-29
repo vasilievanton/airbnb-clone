@@ -1,17 +1,13 @@
-import { Box, CardActionArea, IconButton, ImageListItemBar, Typography } from '@mui/material';
+import { Box, CardActionArea, Typography } from '@mui/material';
 import React from 'react';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
-import StarIcon from '@mui/icons-material/Star';
-import { useDispatch, useSelector } from 'react-redux';
-import { addItemAction, removeItemAction } from '../../store/actions';
+import { useSelector } from 'react-redux';
+import AddToWishlistButton from '../UI/AddToWishlistButton';
 
 import MyImageList from './MyImageList';
 
 const OpenCard = () => {
   const img = useSelector((state) => state.isModal.item);
-  const selected = useSelector((state) => !!state.wishlist.items.filter((item) => item.id === img.id)[0]);
-  const dispatch = useDispatch();
-  console.log(img);
+
   return (
     <>
       <Box sx={{ overflow: 'scroll', width: '100%', maxHeight: 400, p: 3 }} multiline>
@@ -41,22 +37,7 @@ const OpenCard = () => {
           <Box sx={{ width: 500, height: 450, overflow: 'scroll' }}>
             <MyImageList img={img} />
           </Box>
-          <ImageListItemBar
-            onClick={(e) => {
-              e.stopPropagation();
-              if (selected) {
-                dispatch(removeItemAction(img.id));
-              } else {
-                dispatch(addItemAction(img));
-              }
-            }}
-            sx={{
-              background: 'none',
-            }}
-            position="bottom"
-            actionIcon={<IconButton sx={{ color: 'white' }}>{selected ? <StarIcon /> : <StarBorderIcon />}</IconButton>}
-            actionPosition="left"
-          />
+          <AddToWishlistButton img={img} position={{x: 'bottom', y: 'left'}} />
         </CardActionArea>
       </Box>
     </>

@@ -3,9 +3,9 @@ import React from 'react';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 import { useSelector, useDispatch } from 'react-redux';
-import { addItemAction, removeItemAction } from '../store/actions';
+import { addItemAction, removeItemAction } from '../../store/actions';
 
-const AddToWishlistButton = ({ img }) => {
+const AddToWishlistButton = ({ img,position }) => {
   const dispatch = useDispatch();
   const selected = useSelector((state) => !!state.wishlist.items.filter((item) => item.id === img.id)[0]);
   const addToWishList = (e) => {
@@ -18,11 +18,11 @@ const AddToWishlistButton = ({ img }) => {
   };
   return (
     <ImageListItemBar
-      onClick={(e) => addToWishList(e)}
+      onClick={addToWishList}
       sx={{background: 'none'}}
-      position="top"
+      position={position.x}
+      actionPosition={position.y}
       actionIcon={<IconButton sx={{ color: 'white' }}>{selected ? <StarIcon /> : <StarBorderIcon />}</IconButton>}
-      actionPosition="right"
     />
   );
 };

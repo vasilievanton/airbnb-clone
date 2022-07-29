@@ -3,7 +3,7 @@ import React, { memo, useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setOpenModalAction } from '../store/actions';
 import SimpleImageSlider from 'react-simple-image-slider';
-import AddToWishlistButton from './AddToWishlistButton';
+import AddToWishlistButton from './UI/AddToWishlistButton';
 
 const MyCard = memo(({ img }) => {
   const columnGrid = useSelector((state) => state.column.md);
@@ -12,7 +12,6 @@ const MyCard = memo(({ img }) => {
   const handleOpenModal = useCallback(() => {
     dispatch(setOpenModalAction(img));
   }, [img, dispatch]);
-
   // TODO: добавить алерт при добавлении карточки с кликом и переходом в вишлист
 
   return (
@@ -23,7 +22,7 @@ const MyCard = memo(({ img }) => {
             <div onMouseEnter={() => {setShowNavs(true)}} onMouseLeave={() => {setShowNavs(false)}}>
               <SimpleImageSlider onClick={handleOpenModal} bgColor="#fff" width="100%" navSize={25} navMargin={1} showBullets={false} height={columnGrid === 6 ? 360 : 250} images={img.urls} showNavs={showNavs} />
             </div>
-            <AddToWishlistButton img={img} />
+            <AddToWishlistButton img={img} position={{x: 'top', y: 'right'}} />
           </Box>
         </CardActionArea>
       </Card>
