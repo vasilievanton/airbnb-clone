@@ -21,7 +21,7 @@ export const itemsReducer = (state = items, action) => {
       console.log(action);
       return {
         ...state,
-        items: [...state.items.filter((item) => item.tags.includes(action.keyFilter))],
+        items: [...defaultState.items.filter((item) => item.tags.includes(action.keyFilter))],
       };
     }
     default:
