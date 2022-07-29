@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import OpenCard from './OpenCard';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { setCloseModalAction } from '../store/actions';
+import { setCloseModalAction } from '../../store/actions';
 
 const styleModal = {
   display: 'flex',
@@ -28,9 +28,8 @@ const styleCard = {
   boxShadow: 24,
 };
 
-const MyModal = ({ setImgIdInModal, imgIdInModal }) => {
-
-  //TODO: ({ setImgIdInModal, imgIdInModal }) перенести в редакс для удобство вызова модального окна из вишлиста
+const MyModal = ({ setImgIdInModal }) => {
+  const imgIdInModal = useSelector((state) => state.isModal.item);
   const isOpenModal = useSelector((state) => state.isModal.isModal);
   const dispatch = useDispatch();
 

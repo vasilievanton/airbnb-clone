@@ -1,67 +1,48 @@
-import { Box, Card, CardActionArea, CardContent, CardMedia, Grid, IconButton, ImageListItemBar, Typography } from '@mui/material';
-import React, { useState } from 'react';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
-import StarIcon from '@mui/icons-material/Star';
+import { Box, Button, Card, CardActionArea, Grid, Typography } from '@mui/material';
+import React, { memo, useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItemAction, removeItemAction } from '../store/actions';
+import { setOpenModalAction } from '../store/actions';
 import SimpleImageSlider from 'react-simple-image-slider';
+import AddToWishlistButton from './AddToWishlistButton';
 
-const MyCard = ({ img, handleOpen,columnGrid }) => {
-  const selected = useSelector((state) => !!state.wishlist.items.filter((item) => item.id === img.id)[0]);
+const MyCard = memo(({ img }) => {
+  const columnGrid = useSelector((state) => state.column.md);
+  const [showNavs, setShowNavs] = useState(false)
   const dispatch = useDispatch();
-  const handleOpenModal = () => {
-    handleOpen(img);
-  };
+  const handleOpenModal = useCallback(() => {
+    dispatch(setOpenModalAction(img));
+  }, [img, dispatch]);
 
-  const addToWishList = (e) => {
-    e.stopPropagation();
-    if (selected) {
-      dispatch(removeItemAction(img.id));
-    } else {
-      dispatch(addItemAction(img));
-    }
-  };
+  // TODO: добавить алерт при добавлении карточки с кликом и переходом в вишлист
 
   return (
-    <Grid item md={columnGrid}>
-      <Card sx={{ mt: 4, boxShadow: 'none', borderRadius: 3 }}>
-        <CardActionArea
-          sx={{ cursor: 'pointer' }}
-          component="div"
-          onClick={(e) => {
-            e.stopPropagation();
-            handleOpenModal();
-          }}
-        >
+    <Grid item md={columnGrid} sx={{ height: 500 }}>
+      <Card sx={{ mt: 4, boxShadow: 'none', borderRadius: 5 }}>
+        <CardActionArea sx={{ cursor: 'pointer' }} component="div" onClick={handleOpenModal}>
           <Box onClick={(e) => e.stopPropagation()} sx={{ borderRadius: 3, overflow: 'hidden' }}>
-            <SimpleImageSlider onClick={() => handleOpenModal()} width="100%" navSize={30} navMargin={1} showBullets={false} height={250} images={img.urls} showNavs={true} />
-            <ImageListItemBar
-              onClick={(e) => addToWishList(e)}
-              sx={{
-                background: 'none',
-              }}
-              position="top"
-              actionIcon={<IconButton sx={{ color: 'white' }}>{selected ? <StarIcon /> : <StarBorderIcon />}</IconButton>}
-              actionPosition="right"
-            />
+            <div onMouseEnter={() => {setShowNavs(true)}} onMouseLeave={() => {setShowNavs(false)}}>
+              <SimpleImageSlider onClick={handleOpenModal} bgColor="#fff" width="100%" navSize={25} navMargin={1} showBullets={false} height={columnGrid === 6 ? 360 : 250} images={img.urls} showNavs={showNavs} />
+            </div>
+            <AddToWishlistButton img={img} />
           </Box>
-          <CardContent>
-            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-              <Typography gutterBottom variant="h5" component="div">
-                {img.title}
-              </Typography>
-              <Typography variant="body1" sx={{ fontWeight: 700 }} color="text.secondary">
-                {img.price} $/day
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {img.description}
-              </Typography>
-            </Box>
-          </CardContent>
         </CardActionArea>
       </Card>
+      <Box sx={{ height: 180, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <Box sx={{ p: 1 }}>
+          <Typography gutterBottom variant="h5" component="div">
+            {img.title}
+          </Typography>
+          <Typography variant="body1" sx={{ fontWeight: 700 }} color="text.secondary">
+            {img.price} $/day
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {img.description.length > 90 ? `${img.description.substr(0, 90)} ...` : img.description}
+          </Typography>
+        </Box>
+        <Button onClick={() => handleOpenModal()}>Learn more</Button>
+      </Box>
     </Grid>
   );
-};
+});
 
 export default MyCard;

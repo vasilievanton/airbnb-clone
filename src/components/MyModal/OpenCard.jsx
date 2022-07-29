@@ -1,14 +1,17 @@
-import { Box, CardActionArea, CardMedia, IconButton, ImageList, ImageListItem, ImageListItemBar, Typography } from '@mui/material';
+import { Box, CardActionArea, IconButton, ImageListItemBar, Typography } from '@mui/material';
 import React from 'react';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItemAction, removeItemAction } from '../store/actions';
+import { addItemAction, removeItemAction } from '../../store/actions';
 
-const OpenCard = ({ img }) => {
+import MyImageList from './MyImageList';
+
+const OpenCard = () => {
+  const img = useSelector((state) => state.isModal.item);
   const selected = useSelector((state) => !!state.wishlist.items.filter((item) => item.id === img.id)[0]);
   const dispatch = useDispatch();
-
+  console.log(img);
   return (
     <>
       <Box sx={{ overflow: 'scroll', width: '100%', maxHeight: 400, p: 3 }} multiline>
@@ -36,13 +39,7 @@ const OpenCard = ({ img }) => {
       <Box>
         <CardActionArea component="div">
           <Box sx={{ width: 500, height: 450, overflow: 'scroll' }}>
-            <ImageList variant="quilted" cols={2} gap={5} sx={{m:0}}>
-              {img.urls.map((item) => (
-                <ImageListItem key={item}>
-                  <img src={`${item.url}?w=248&fit=crop&auto=format`} srcSet={`${item.url}?w=248&fit=crop&auto=format&dpr=2 2x`} loading="lazy" />
-                </ImageListItem>
-              ))}
-            </ImageList>
+            <MyImageList img={img} />
           </Box>
           <ImageListItemBar
             onClick={(e) => {

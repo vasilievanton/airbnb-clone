@@ -1,26 +1,34 @@
 import { Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ClearIcon from '@mui/icons-material/Clear';
-import { removeItemAction } from '../store/actions';
+import { removeItemAction, setCloseDrawerAction, setOpenModalAction } from '../store/actions';
+import ToggleColumns from './ToggleColumns';
 
-const MyDrawer = ({ open, setOpen }) => {
+const MyDrawer = () => {
   const items = useSelector((state) => state.wishlist.items);
+  const isOpen = useSelector((state) => state.isDrawer.isOpenDrawer);
   const dispatch = useDispatch();
 
+  const handleOpenModal = useCallback(
+    (item) => {
+      dispatch(setOpenModalAction(item));
+    },
+    [dispatch]
+  );
   return (
-    <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
+    <Drawer anchor="left" open={isOpen} onClose={() => dispatch(setCloseDrawerAction())}>
+      <Typography sx={{ display: 'flex', justifyContent: 'center', mt: 3 }} variant="h6">
+        My Wishlist
+      </Typography>
       <Box sx={{ width: 300 }}>
-        <Typography sx={{ display: 'flex', justifyContent: 'center', mt: 3 }} variant="h6">
-          My Wishlist
-        </Typography>
         <List>
           {items.map((item) => (
             <ListItem key={item.id}>
               <ListItemButton
                 onClick={() => {
-                  console.log('click');
+                  handleOpenModal(item);
                 }}
               >
                 <ListItemText primary={item.title} />
@@ -31,6 +39,12 @@ const MyDrawer = ({ open, setOpen }) => {
             </ListItem>
           ))}
         </List>
+        <Typography sx={{ display: 'flex', justifyContent: 'center', mt: 3 }} variant="h6">
+          Column view
+        </Typography>
+        <Box sx={{ mt: 3 }}>
+          <ToggleColumns />
+        </Box>
       </Box>
     </Drawer>
   );

@@ -8,10 +8,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import { setOpenDrawerAction } from '../store/actions';
+import { useDispatch } from 'react-redux';
 
 export default function MenuAppBar({ setOpenDrawer }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  const dispatch = useDispatch();
+  
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -24,7 +27,7 @@ export default function MenuAppBar({ setOpenDrawer }) {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }} onClick={() => setOpenDrawer(true)}>
+          <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }} onClick={() => dispatch(setOpenDrawerAction())}>
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
