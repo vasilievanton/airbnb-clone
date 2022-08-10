@@ -1,9 +1,10 @@
-import { items } from '../data/items';
+// import { items } from '../data/items';
 import { ADD_MANY_ITEM, FILTER_ITEMS, LOAD_ITEMS } from './types';
 
-const defaultState = { ...items };
+// const defaultState = [ ...items ];
+const defaultState = {items: []};
 
-export const itemsReducer = (state = items, action) => {
+export const itemsReducer = (state = defaultState, action) => {
   switch (action.type) {
     case ADD_MANY_ITEM: {
       return {

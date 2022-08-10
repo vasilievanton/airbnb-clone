@@ -1,0 +1,9 @@
+.active_link {
+  color: white;
+  font-weight: 700;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+}

@@ -2,7 +2,7 @@ import { Grid, Typography } from '@mui/material';
 import { Box, Container } from '@mui/system';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import MyCard from '../MyCard';
+import MyCard from '../components/MyCard';
 
 const WishlistPage = () => {
   const items = useSelector((state) => state.wishlist.items);
