@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Tab, Tabs } from '@mui/material';
+import { Divider, IconButton, InputBase, Paper, Tab, Tabs } from '@mui/material';
 import { Box } from '@mui/system';
 import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 import ForestIcon from '@mui/icons-material/Forest';
@@ -9,10 +9,14 @@ import CottageIcon from '@mui/icons-material/Cottage';
 import { useDispatch } from 'react-redux';
 import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
 import { fetchItems } from '../asyncActions/items';
+import SearchIcon from '@mui/icons-material/Search';
 
 const Filter = () => {
   const [value, setValue] = useState(0);
   const [query, setQuery] = useState('house');
+  const [inputValue, setInputValue] = useState('');
+
+  const [isSearch, setSearch] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,11 +24,15 @@ const Filter = () => {
   }, [dispatch, query]);
 
   const clickOnTab = (keyFilter) => {
-    setQuery(keyFilter)
+    setQuery(keyFilter);
   };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    setQuery(inputValue);
   };
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -38,6 +46,18 @@ const Filter = () => {
           <Tab onClick={() => clickOnTab('canada-house')} label="Canada" sx={{ textTransform: 'capitalize', fontSize: 12 }} icon={<CottageIcon />} />
         </Tabs>
       </Box>
+      {isSearch ? (
+        <Paper onSubmit={onFormSubmit} component="form" sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}>
+          <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Search Location" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+          <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
+            <SearchIcon />
+          </IconButton>
+        </Paper>
+      ) : (
+        <IconButton onClick={() => setSearch(true)}>
+          <SearchIcon />
+        </IconButton>
+      )}
     </Box>
   );
 };
