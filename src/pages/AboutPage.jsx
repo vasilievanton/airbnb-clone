@@ -33,7 +33,7 @@ const AboutPage = () => {
 
   return (
     <>
-      {img &&
+      {/* {img &&
         img.map((item) => (
           <Box>
             <TextField value={item.data.title} label="title" variant="outlined" />
@@ -41,7 +41,7 @@ const AboutPage = () => {
             <TextField value={item.data.price} label="title" variant="outlined" />
             <MyImageList img={item.data} />
           </Box>
-        ))}
+        ))} */}
 
       <Box sx={{ mt: 5 }}>
         <TextField value={inputValue.title} onChange={(e) => inputChange(e, 'title')} label="title" variant="outlined" />
