@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBarLink from './UI/AppBarLink/AppBarLink';
 import { setOpenDrawerAction } from '../store/actions';
+import { SEARCH_IMAGES_ROUTE } from '../utils/consts';
+import { Link } from 'react-router-dom';
 
 export default function MenuAppBar() {
   const dispatch = useDispatch();
@@ -60,6 +62,7 @@ export default function MenuAppBar() {
             >
               <MenuItem onClick={handleClose}>Profile</MenuItem>
               <MenuItem onClick={handleClose}>My account</MenuItem>
+              <MenuItem onClick={handleClose}><Link style={{textDecoration: 'none', color: 'inherit'}} to={SEARCH_IMAGES_ROUTE}>Search Images</Link></MenuItem>
               <MenuItem onClick={handleClose}>Log out</MenuItem>
             </Menu>
           </div>

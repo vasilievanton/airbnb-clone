@@ -13,3 +13,7 @@ export const SET_CLOSE_DRAWER = 'SET_CLOSE_DRAWER';
 
 
 export const SET_COLUMN = 'SET_COLUMN';
+
+export const SET_LIMIT = 'SET_LIMIT';
+
+

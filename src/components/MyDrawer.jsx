@@ -9,6 +9,7 @@ import ToggleColumns from './ToggleColumns';
 const MyDrawer = () => {
   const items = useSelector((state) => state.wishlist.items);
   const isOpen = useSelector((state) => state.isDrawer.isOpenDrawer);
+
   const dispatch = useDispatch();
 
   const handleOpenModal = useCallback(
@@ -17,6 +18,7 @@ const MyDrawer = () => {
     },
     [dispatch]
   );
+
   return (
     <Drawer anchor="left" open={isOpen} onClose={() => dispatch(setCloseDrawerAction())}>
       <Typography sx={{ display: 'flex', justifyContent: 'center', mt: 3 }} variant="h6">

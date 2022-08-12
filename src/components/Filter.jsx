@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Divider, IconButton, InputBase, Paper, Tab, Tabs } from '@mui/material';
+import { IconButton, InputBase, Paper, Tab, Tabs } from '@mui/material';
 import { Box } from '@mui/system';
 import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 import ForestIcon from '@mui/icons-material/Forest';

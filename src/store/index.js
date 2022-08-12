@@ -4,6 +4,7 @@ import { columnReducer } from './columnReducer';
 import { itemsReducer } from './itemsReducer';
 import { myDrawerReducer } from './myDrawerReducer';
 import { myModalReducer } from './myModalReducer';
+import { rateLimitReducer } from './rateLimitReducer';
 import { wishlistReducer } from './wishlistReducer';
 
 const rootReduser = combineReducers({
@@ -12,6 +13,7 @@ const rootReduser = combineReducers({
   isModal: myModalReducer,
   column: columnReducer,
   isDrawer: myDrawerReducer,
+  rateLimit: rateLimitReducer
 });
 
 export const store = createStore(rootReduser, applyMiddleware(thunk));
