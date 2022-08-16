@@ -1,7 +1,7 @@
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import MenuAppBar from '../components/MenuAppBar';
+import MenuAppBar from '../components/MenuAppBar/MenuAppBar';
 
 const Layout = () => {
   return (

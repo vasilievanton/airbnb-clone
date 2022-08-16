@@ -1,17 +1,12 @@
-import React from 'react';
-// import Filter from './components/Filter';
-import MyDrawer from './components/MyDrawer';
+import React, { useEffect, useState } from 'react';
 import MyModal from './components/MyModal/MyModal';
 import AppRouter from './components/AppRouter';
 
-
 function App() {
-  
   return (
     <div>
-      <AppRouter/>
+      <AppRouter />
       <MyModal />
-      <MyDrawer />
     </div>
   );
 }

@@ -13,7 +13,7 @@ const LoginForm = ({ handleClick }) => {
     email: yup.string().email('Введите корректный E-mail').required('Обязательное поле'),
     password: yup.string().typeError('Должно быть строкой').required('Обязательное поле'),
   });
-
+   
   return (
     <Container>
       <Formik
@@ -29,7 +29,7 @@ const LoginForm = ({ handleClick }) => {
       >
         {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
           <Box sx={{ display: 'flex' }}>
-            <Card component="form" sx={{ p: 4, margin: '0 auto', mt: 4, width: '400px' }}>
+            <Card component="div" sx={{ p: 4, margin: '0 auto', mt: 4, width: '400px' }}>
               <Box component="form" sx={{ margin: '0 auto', width: '400px' }}>
                 <InputFormik error={!!touched.email && !!errors.email} helperText={!!touched.email && !!errors.email ? errors.email : ' '} label="E-mail" name="email" onChange={handleChange} onBlur={handleBlur} value={values.email} />
                 <InputFormik type={isShowPass ? 'text' : 'password'} error={!!touched.password && !!errors.password} helperText={!!touched.password && !!errors.password ? errors.password : ' '} label="Пароль" name="password" onChange={handleChange} onBlur={handleBlur} value={values.password} />
@@ -38,12 +38,11 @@ const LoginForm = ({ handleClick }) => {
                     Нет аккаунта? <Link to="/registration">Зарегистрироваться</Link>
                   </Typography>
                   <Button variant="contained" disabled={!isValid && !dirty} onClick={handleSubmit} type="submit">
-                    Отправить
+                    Войти
                   </Button>
                 </Box>
-
                 <Box sx={{ mt: 3 }}>
-                  <FormControlLabel control={<Checkbox checked={isShowPass} onChange={() => setShowPass(!isShowPass)} name="passChecked" />} label="Показать пароль" />
+                  <FormControlLabel  control={<Checkbox checked={isShowPass} onChange={() => setShowPass(!isShowPass)} name="passChecked" />} label="Показать пароль" />
                 </Box>
               </Box>
             </Card>

@@ -11,9 +11,9 @@ export const SET_CLOSE_MODAL = 'SET_CLOSE_MODAL';
 export const SET_OPEN_DRAWER = 'SET_OPEN_DRAWER';
 export const SET_CLOSE_DRAWER = 'SET_CLOSE_DRAWER';
 
-
 export const SET_COLUMN = 'SET_COLUMN';
 
 export const SET_LIMIT = 'SET_LIMIT';
 
-
+export const SET_USER = 'SET_USER';
+export const REMOVE_USER = 'REMOVE_USER';

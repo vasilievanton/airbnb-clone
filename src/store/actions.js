@@ -1,4 +1,4 @@
-import { ADD_ITEM, FILTER_ITEMS, LOAD_ITEMS, REMOVE_ITEM, SET_CLOSE_MODAL, SET_OPEN_MODAL, SET_COLUMN, ADD_MANY_ITEM, SET_OPEN_DRAWER, SET_CLOSE_DRAWER, SET_LIMIT } from './types';
+import { ADD_ITEM, FILTER_ITEMS, LOAD_ITEMS, REMOVE_ITEM, SET_CLOSE_MODAL, SET_OPEN_MODAL, SET_COLUMN, ADD_MANY_ITEM, SET_OPEN_DRAWER, SET_CLOSE_DRAWER, SET_LIMIT, SET_USER, REMOVE_USER } from './types';
 
 export const addItemAction = (item) => ({
   type: ADD_ITEM,
@@ -41,8 +41,18 @@ export const setCloseDrawerAction = () => ({
   type: SET_CLOSE_DRAWER,
 });
 
-
 export const setRateLimitAction = (limit) => ({
   type: SET_LIMIT,
   limit,
+});
+
+export const setUserAction = (id, email, token, displayName) => ({
+  type: SET_USER,
+  id,
+  email,
+  token,
+  displayName,
+});
+export const removeUserAction = () => ({
+  type: REMOVE_USER,
 });

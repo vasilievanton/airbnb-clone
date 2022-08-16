@@ -34,7 +34,7 @@ const SingUpForm = ({ handleClick }) => {
         }}
         validateOnBlur
         onSubmit={(values) => {
-          handleClick(values.email, values.password);
+          handleClick(values.email, values.password, values.name);
         }}
         validationSchema={validationsSchema}
       >

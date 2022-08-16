@@ -1,8 +1,7 @@
 import React from 'react';
 import { Container, Grid } from '@mui/material';
 import MyCard from '../components/MyCard';
-
-import {  useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Filter from '../components/Filter';
 
 const HomePage = () => {

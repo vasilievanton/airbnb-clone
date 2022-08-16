@@ -7,3 +7,5 @@ export const ITEMS_ROUTE = '/items/:id'
 export const HOME_ROUTE = '/'
 export const NOT_FOUND_ROUTE = '*'
 export const SEARCH_IMAGES_ROUTE = '/search_images'
+export const FIREBASE_ROUTE = '/firebase'
+

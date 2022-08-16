@@ -16,6 +16,7 @@ const AddToWishlistButton = ({ img,position }) => {
       dispatch(addItemAction(img));
     }
   };
+  
   return (
     <ImageListItemBar
       onClick={addToWishList}

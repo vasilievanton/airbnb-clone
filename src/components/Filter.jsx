@@ -15,7 +15,6 @@ const Filter = () => {
   const [value, setValue] = useState(0);
   const [query, setQuery] = useState('house');
   const [inputValue, setInputValue] = useState('');
-
   const [isSearch, setSearch] = useState(false);
   const dispatch = useDispatch();
 

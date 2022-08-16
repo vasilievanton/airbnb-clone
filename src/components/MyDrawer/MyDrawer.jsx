@@ -3,16 +3,14 @@ import { Box } from '@mui/system';
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ClearIcon from '@mui/icons-material/Clear';
-import { removeItemAction, setCloseDrawerAction, setOpenModalAction } from '../store/actions';
-import ToggleColumns from './ToggleColumns';
+import { removeItemAction, setOpenModalAction } from '../../store/actions';
+import ToggleColumns from '../ToggleColumns';
 
-const MyDrawer = () => {
+const MyDrawer = ({ isOpen, setOpen }) => {
   const items = useSelector((state) => state.wishlist.items);
-  const isOpen = useSelector((state) => state.isDrawer.isOpenDrawer);
-
   const dispatch = useDispatch();
 
-  const handleOpenModal = useCallback(
+  const handleOpenModal = useCallback( 
     (item) => {
       dispatch(setOpenModalAction(item));
     },
@@ -20,7 +18,7 @@ const MyDrawer = () => {
   );
 
   return (
-    <Drawer anchor="left" open={isOpen} onClose={() => dispatch(setCloseDrawerAction())}>
+    <Drawer anchor="left" open={isOpen} onClose={() => setOpen(false)}>
       <Typography sx={{ display: 'flex', justifyContent: 'center', mt: 3 }} variant="h6">
         My Wishlist
       </Typography>
