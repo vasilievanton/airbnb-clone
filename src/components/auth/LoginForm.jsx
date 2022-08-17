@@ -44,6 +44,7 @@ const LoginForm = ({ handleClick }) => {
                 <Box sx={{ mt: 3 }}>
                   <FormControlLabel  control={<Checkbox checked={isShowPass} onChange={() => setShowPass(!isShowPass)} name="passChecked" />} label="Показать пароль" />
                 </Box>
+                <Typography>123@gg.ru</Typography>
               </Box>
             </Card>
           </Box>

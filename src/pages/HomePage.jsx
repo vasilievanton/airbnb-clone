@@ -13,7 +13,7 @@ const HomePage = () => {
         <Filter />
         <Grid container spacing={2} direction="row" justifyContent="flex-start" alignItems="stretch">
           {imgList.map((img) => (
-            <MyCard img={img} id={img.id} key={img.id} />
+            <MyCard img={img} id={img.id} key={img.id}/>
           ))}
         </Grid>
       </Container>

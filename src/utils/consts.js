@@ -8,4 +8,5 @@ export const HOME_ROUTE = '/'
 export const NOT_FOUND_ROUTE = '*'
 export const SEARCH_IMAGES_ROUTE = '/search_images'
 export const FIREBASE_ROUTE = '/firebase'
+export const ADD_HOUSE_ROUTE = '/add-house'
 

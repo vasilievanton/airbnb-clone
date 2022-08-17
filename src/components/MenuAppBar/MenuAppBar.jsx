@@ -6,7 +6,7 @@ import UserBlock from './UserBlock';
 import AppBarLink from '../UI/AppBarLink/AppBarLink';
 import MyDrawer from '../MyDrawer/MyDrawer';
 import { useAuth } from '../../hooks/useAuth';
-import { ABOUT_ROUTE, FIREBASE_ROUTE, HOME_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, WISHLIST_ROUTE } from '../../utils/consts';
+import { ABOUT_ROUTE, ADD_HOUSE_ROUTE, FIREBASE_ROUTE, HOME_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, WISHLIST_ROUTE } from '../../utils/consts';
 
 export default function MenuAppBar() {
   const [isOpenLeftMenu, setOpenLeftMenu] = useState(false);
@@ -31,6 +31,7 @@ export default function MenuAppBar() {
             </Link>
           </Typography>
           <AppBarLink title="About" to={ABOUT_ROUTE} />
+          <AppBarLink title="Add House" to={ADD_HOUSE_ROUTE} />
           <AppBarLink title="Firebase" to={FIREBASE_ROUTE} />
           <AppBarLink title="Wishlist" to={WISHLIST_ROUTE} />
           {isAuth ? (

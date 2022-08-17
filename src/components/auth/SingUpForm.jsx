@@ -13,7 +13,7 @@ const SingUpForm = ({ handleClick }) => {
 
   const validationsSchema = yup.object().shape({
     name: yup.string().typeError('Должно быть строкой').required('Обязательное поле'),
-    lastName: yup.string().typeError('Должно быть строкой').required('Обязательное поле'),
+    // lastName: yup.string().typeError('Должно быть строкой').required('Обязательное поле'),
     password: yup.string().typeError('Должно быть строкой').required('Обязательное поле'),
     confirmPassword: yup
       .string()
@@ -27,7 +27,7 @@ const SingUpForm = ({ handleClick }) => {
       <Formik
         initialValues={{
           name: '',
-          lastName: '',
+          // lastName: '',
           password: '',
           confirmPassword: '',
           email: '',
@@ -42,7 +42,7 @@ const SingUpForm = ({ handleClick }) => {
           <Box sx={{ display: 'flex' }}>
             <Card component="form" sx={{ p: 4, margin: '0 auto', mt: 4, width: '400px' }}>
               <InputFormik error={!!touched.name && !!errors.name} helperText={!!touched.name && !!errors.name ? errors.name : ' '} label="Имя" name="name" onChange={handleChange} onBlur={handleBlur} value={values.name} />
-              <InputFormik error={!!touched.lastName && !!errors.lastName} helperText={!!touched.lastName && !!errors.lastName ? errors.lastName : ' '} label="Фамилия" name="lastName" onChange={handleChange} onBlur={handleBlur} value={values.lastName} />
+              {/* <InputFormik error={!!touched.lastName && !!errors.lastName} helperText={!!touched.lastName && !!errors.lastName ? errors.lastName : ' '} label="Фамилия" name="lastName" onChange={handleChange} onBlur={handleBlur} value={values.lastName} /> */}
               <InputFormik error={!!touched.email && !!errors.email} helperText={!!touched.email && !!errors.email ? errors.email : ' '} label="E-mail" name="email" onChange={handleChange} onBlur={handleBlur} value={values.email} />
               <InputFormik type={isShowPass ? 'text' : 'password'} error={!!touched.password && !!errors.password} helperText={!!touched.password && !!errors.password ? errors.password : ' '} label="Пароль" name="password" onChange={handleChange} onBlur={handleBlur} value={values.password} />
               <InputFormik
